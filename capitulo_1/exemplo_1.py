@@ -99,6 +99,9 @@ for i, j in friendship_pairs:
     dicionario_amigos[j].append(i)
 
 
-# print(dicionario_amigos) 
+
+print(dicionario_amigos) 
 
 # Definindo o número total de cone
+
+# Lembre -se 
