@@ -194,6 +194,55 @@ for usuario in lista_usuarios:
 
 # quantidade_usuarios_id.sort()
 
-for id_ in range(0, 10):
+#  A melhor alternativa é criar uma lista de tuplas e após isto ordenar esta lista com base na quantidade de amigos 
 
-    print(f"Usuário {id_}: {dicionario_ranking[id_]}")
+# Minha forma 
+
+def lista_id_amigos(lista_users):
+
+    lista_tuplas_amigos = []
+    for usuario in lista_users: 
+
+        tupla = quantidade_amigos(usuario)
+
+        # chave = tupla[0]
+        # quantidade_usuarios = tupla[1]
+
+        lista_tuplas_amigos.append(tupla)
+
+    return lista_tuplas_amigos 
+
+# A lista que contém as tuplas com os ids e as quantidades de amigos 
+
+lista_id_users = lista_id_amigos(lista_usuarios)
+
+
+lista_id_users.sort(key= lambda tupla : tupla[1], # Acessamos a tupla que contám o id e a quantidade de amigos que o usuário possui e ordenamos com base na quantidade amigos 
+                    reverse= True)  # Queremos uma lista decrescente
+
+print(lista_id_users)
+
+# Agora vou imprimir o nome e a quantidade de usuários. 
+
+# Nós acabamos de encontrar o usuários que são centrais para 
+# esta rede social. O nome desta métrica é centralidade de grau,
+# e significa o valor de cada usuário para que a rede funcione, é como medir 
+# a importância do CR7 para o instagram e etc, quanto mais conexões uma pessoa 
+# possui em uma rede social mais aquela pessoa é importante para aquela rede social. 
+def ranking_user_mais_influentes(lista_users_id):
+    for user in lista_id_users:
+
+        for chave in lista_usuarios:
+
+            if chave["id"] == user[0]:
+
+                print(f"""id: {chave["id"]}
+    Nome: {chave["name"]} 
+    Amigos: {user[1]}
+    ----------------------""")
+
+ranking_user_mais_influentes(lista_id_users)
+
+# for id_ in range(0, 10):
+
+#     print(f"Usuário {id_}: {dicionario_ranking[id_]}")

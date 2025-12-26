@@ -114,5 +114,50 @@ for tupla_indice_1, tupla_indice_2 in friendship_pairs:
     dicionario_amigos[tupla_indice_2].append(tupla_indice_1)
 
 
+# Vamos extrair mais conhecimento acerca dos nossos dados. 
 
-print(dicionario_amigos)
+# Vamos descobrir a quantidade de conexões que a nossa rede social possui. 
+
+def quantidade_amigos(user):
+    id_user = user["id"]
+    amigos = dicionario_amigos[id_user]
+    quantidade_amigos = len(amigos)
+    return quantidade_amigos 
+
+def quantidade_conexoes():
+    numero_conexoes = 0 
+
+    for amigo in lista_users: 
+
+        quantidade_amigos_user = quantidade_amigos(amigo)
+
+        numero_conexoes += quantidade_amigos_user 
+
+    # print("Quantidade total conexões:",numero_conexoes) 
+
+    return numero_conexoes
+
+# Definindo a quantidade média de conexões que cada usuário possui. 
+# quantidade total de conexões dividida pela quantidade de usuário, nos 
+# retorna o resultado de quantidade média de amigos que um usuário possui. 
+
+def quantidade_media_conexoes():
+
+    total_users = len(lista_users)
+    total_conexoes = quantidade_conexoes()
+
+    quantidade_media = total_conexoes / total_users 
+
+    return quantidade_media
+
+media_amigos = quantidade_media_conexoes()
+
+print("A quantidade média de conexões:", media_amigos)
+
+# Um pequeno relatório. 
+
+def relatorio():
+
+    print(f"""Número usuários: {len(lista_users)}
+Total conexões: {}""")
+# print(dicionario_amigos)
